@@ -1,4 +1,4 @@
-const obj = {
+const tellimus = {
   id: 2113,
   orderNumber: 'E210126001',
   createdAt: '2021-01-26 16:04:24',
@@ -33,16 +33,17 @@ const obj = {
   ],
 };
 
-for (const r of obj.rows) {
+for (const row of tellimus.rows) {
   console.log(
-    r.name,
-    r.amount,
-    r.price,
-    (r.price + r.price * r.vat) * r.amount,
+    row.name,
+    row.amount,
+    row.price,
+    (row.price + row.price * row.vat) * row.amount,
   );
 }
-var sum = obj.rows.reduce(function(_this, val) {
-    return _this + (val.price + val.price * val.vat)
-}, 0);
-
-console.log(sum)
+console.log(
+  tellimus.rows.reduce(
+    (sum, { price, vat, amount }) => sum + (price + price * vat) * amount,
+    0,
+  ),
+);
